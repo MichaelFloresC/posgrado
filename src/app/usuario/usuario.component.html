@@ -1,0 +1,47 @@
+<form [formGroup]="usuarioForm" novalidate (ngSubmit)="onSubmit()">
+    <mat-card class="shipping-card">
+        <mat-card-header>
+          <mat-card-title>Formulario</mat-card-title>
+        </mat-card-header>
+    
+
+        <mat-card-content>
+            <div class="row">
+                <div class="col">
+                    <mat-form-field class="full-width">
+                        <input matInput placeholder="Ingrese usuario" formControlName="usuario">
+                        <mat-error *ngIf="usuarioForm.controls['usuario'].hasError('required')">
+                            El usuario es <strong>requerido</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <mat-form-field class="full-width">
+                        <input matInput placeholder="Ingrese contraseña" type="password" formControlName="contraseña">
+                        <mat-error *ngIf="usuarioForm.controls['contraseña'].hasError('required')">
+                            La contraseña es <strong>requerida</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div class="example-container">
+                <mat-form-field appearance="fill">
+                  <mat-label>Enter your password</mat-label>
+                  <input matInput [type]="hide ? 'password' : 'text'">
+                  <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                  <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                  </button>
+                </mat-form-field>
+              
+            </div>
+        </mat-card-content>
+
+        <mat-card-actions>
+            <button mat-raised-button color="primary" [disabled]='usuarioForm?.invalid' type="submit">Enviar</button>
+          </mat-card-actions>
+
+    </mat-card>
+</form>
